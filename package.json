@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-apple-pay-google-pay",
+  "version": "1.0.0",
+  "description": "Cordova plugin for integrating Apple Pay and Google Pay in modern cordova apps",
+  "cordova": {
+    "id": "cordova-plugin-apple-pay-google-pay",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "applepay",
+    "googlepay"
+  ],
+  "author": "Oleksii Ratnykov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahoho/cordova-apple-pay-google-pay/issues"
+  },
+  "homepage": "https://github.com/mahoho/cordova-apple-pay-google-pay#readme"
+}
