@@ -10,6 +10,24 @@ Plugin supports iOS 11-14. Tested properly with cordova 10 and iOS 14.3.
 cordova plugin add cordova-plugin-apple-pay-google-pay
 ```
 
+iOS requiers ApplePay capability and a merchat configured in your Xcode. Merchant can be obtained from https://developer.apple.com/account/resources/identifiers/list/merchant. Do it manually or via config.xml:
+
+```
+<platform name="ios">
+  
+  <config-file target="*-Debug.plist" parent="com.apple.developer.in-app-payments">
+    <array>
+      <string>developer merchant ID here</string>
+    </array>
+  </config-file>
+
+  <config-file target="*-Release.plist" parent="com.apple.developer.in-app-payments">
+    <array>
+      <string>production merchant ID here</string>
+    </array>
+  </config-file>
+</platform>
+```
 ## Usage
 
 `canMakePayments()` checks whether device is capable to make payments via Apple Pay or Google Pay.  
