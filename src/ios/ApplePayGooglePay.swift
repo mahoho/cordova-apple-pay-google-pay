@@ -16,10 +16,9 @@ import PassKit
      * Check device for ApplePay capability
      */
     @objc(canMakePayments:) func canMakePayments(command: CDVInvokedUrlCommand){
-        let paymentNetworks = [PKPaymentNetwork.visa,  PKPaymentNetwork.masterCard]
         let callbackID = command.callbackId;
         
-        let canMakePayments = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks, capabilities: .capability3DS)
+        let canMakePayments = PKPaymentAuthorizationViewController.canMakePayments()
         
         let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: canMakePayments)
         commandDelegate.send(result, callbackId: callbackID)
