@@ -9,8 +9,10 @@ Plugin supports iOS 11-14. Tested properly with cordova 10 and iOS 14.3.
 ```
 cordova plugin add cordova-plugin-apple-pay-google-pay
 ```
+For Android, register and fill all required forms at https://pay.google.com/business/console.
 
-iOS requiers ApplePay capability and a merchat configured in your Xcode. Merchant can be obtained from https://developer.apple.com/account/resources/identifiers/list/merchant. Do it manually or via config.xml:
+For iOS, you have to have valid developer account with merchant set up and  ApplePay capability and a merchat id configured in your Xcode project. Merchant id can be obtained from https://developer.apple.com/account/resources/identifiers/list/merchant. 
+Do configuration manually or via config.xml:
 
 ```
 <platform name="ios">
@@ -47,13 +49,15 @@ cordova.plugins.ApplePayGooglePay.canMakePayments((r) => {
 `makePaymentRequest()` initiates pay session.
 
 ```
-cordova.plugins.ApplePayGooglePay.makePaymentRequest({
-        merchantId: 'merchant.com.example', // obtain it from https://developer.apple.com/account/resources/identifiers/list/merchant
-        purpose: `Payment for your order #1`,
-        amount: 100,
-        countryCode: "US",
-        currencyCode: "USD"
-      }, r => {
+let request = {
+    merchantId: 'merchant.com.example', // obtain it from https://developer.apple.com/account/resources/identifiers/list/merchant
+    purpose: `Payment for your order #1`,
+    amount: 100,
+    countryCode: "US",
+    currencyCode: "USD"
+}
+
+cordova.plugins.ApplePayGooglePay.makePaymentRequest(request, r => {
         // in success callback, raw response as encoded JSON is returned. Pass it to your payment processor as is. 
         let responseString = r
     
@@ -64,5 +68,13 @@ cordova.plugins.ApplePayGooglePay.makePaymentRequest({
         }
       )
 ```
-
 All parameters in request object are required.
+
+## For Android
+you will have to provide few extra parameters:
+```
+request.gateway = 'stripe'; // or any another processor you are using: https://developers.google.com/pay/api#participating-processors
+request.merchantId = 'XXXXXXX'; // merchant id provided by your processor 
+request.gpMerchantName = 'Your Company Name'; // will be displayed in transaction info
+request.gpMerchantId = 'XXXXXXXXXXXX'; // obtain it at https://pay.google.com/business/console
+```
