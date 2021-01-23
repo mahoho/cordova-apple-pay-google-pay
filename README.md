@@ -14,7 +14,7 @@ For Android, register and fill all required forms at https://pay.google.com/busi
 Also, add folllowing to config.xml:
 
 ```
-<config-file parent="/application" target="AndroidManifest.xml">
+<config-file parent="/manifest/application" target="AndroidManifest.xml">
     <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
