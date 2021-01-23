@@ -26,8 +26,5 @@
 		</config-file>
 		<source-file src="src/android/ApplePayGooglePay.java" target-dir="src/com/plugin/googlepay" />
 		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
-		<config-file target="AndroidManifest.xml" parent="/application">
-			<meta-data android:name="com.google.gms.wallet.api.enabled" android:value="true" />
-		</config-file>
 	</platform>
 </plugin>

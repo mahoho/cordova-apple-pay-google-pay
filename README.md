@@ -11,6 +11,16 @@ cordova plugin add cordova-plugin-apple-pay-google-pay
 ```
 For Android, register and fill all required forms at https://pay.google.com/business/console.
 
+Also, add folllowing to config.xml:
+
+```
+<config-file parent="/application" target="AndroidManifest.xml">
+    <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+</config-file>
+```
+
 For iOS, you have to have valid developer account with merchant set up and  ApplePay capability and a merchat id configured in your Xcode project. Merchant id can be obtained from https://developer.apple.com/account/resources/identifiers/list/merchant. 
 Do configuration manually or via config.xml:
 
