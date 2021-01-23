@@ -13,9 +13,9 @@
     "ecosystem:cordova",
     "cordova-ios",
     "applepay",
-    "googlepay"
+    "googlepay",
     "apple pay",
-    "google pay"	
+    "google pay"
   ],
   "author": "Oleksii Ratnykov",
   "license": "ISC",
