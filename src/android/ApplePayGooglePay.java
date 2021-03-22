@@ -36,9 +36,6 @@ public class ApplePayGooglePay extends CordovaPlugin {
 
     private JSONArray allowedCardNetworks = new JSONArray(
             Arrays.asList(
-                    "AMEX",
-                    "DISCOVER",
-                    "JCB",
                     "MASTERCARD",
                     "VISA"
             )
