@@ -95,6 +95,7 @@ request.gateway = 'stripe'; // or any another processor you are using: https://d
 request.merchantId = 'XXXXXXX'; // merchant id provided by your processor
 request.gpMerchantName = 'Your Company Name'; // will be displayed in transaction info
 request.gpMerchantId = 'XXXXXXXXXXXX'; // obtain it at https://pay.google.com/business/console
+request.environment = 'TEST'; // 'TEST' or 'PRODUCTION'
 ```
 
 Also, on Android checking payment availability calling `canMakePayments()` always returns false even if user has a valid card attached to GooglePay.
