@@ -2,7 +2,7 @@
 This plugin is built as unified method for obtaining payment tokens to forward it to payment processor (eg Adyen,
 Stripe, Wayforpay, Liqpay etc).
 
-Plugin supports iOS 11-14. Tested properly with cordova 10, iOS 14.3 and android 11.
+Plugin supports iOS 11+.
 
 ## Installation
 
