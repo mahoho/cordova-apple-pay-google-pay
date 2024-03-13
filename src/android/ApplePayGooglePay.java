@@ -36,9 +36,6 @@ public class ApplePayGooglePay extends CordovaPlugin {
 
     private JSONArray allowedCardNetworks = new JSONArray(
             Arrays.asList(
-                    "AMEX",
-                    "DISCOVER",
-                    "JCB",
                     "MASTERCARD",
                     "VISA"
             )
@@ -46,7 +43,13 @@ public class ApplePayGooglePay extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder().setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION).build();
+		
+		String environment = preferences.getString("GooglePayEnvironment", "production");
+		
+		Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder().setEnvironment(
+		environment.equals("production") ? WalletConstants.ENVIRONMENT_PRODUCTION : WalletConstants.ENVIRONMENT_TEST
+		).build();
+        
         Activity activity = cordova.getActivity();
 
         paymentsClient = Wallet.getPaymentsClient(activity, walletOptions);
