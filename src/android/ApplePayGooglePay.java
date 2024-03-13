@@ -46,7 +46,19 @@ public class ApplePayGooglePay extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder().setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION).build();
+		int walletEnvironment = WalletConstants.ENVIRONMENT_PRODUCTION;
+    	if (action.equals("makePaymentRequest")) {
+    		JSONObject argss = args.getJSONObject(0);
+    		if (argss.has("environment")) {
+    			String environment = argss.getString("environment");
+        		if (environment.equalsIgnoreCase("TEST")) {
+        			walletEnvironment = WalletConstants.ENVIRONMENT_TEST;
+        		}
+    		}
+    	}
+    	//callbackContext.success("walletEnvironment: "+walletEnvironment);
+		
+        Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder().setEnvironment(walletEnvironment).build();
         Activity activity = cordova.getActivity();
 
         paymentsClient = Wallet.getPaymentsClient(activity, walletOptions);
